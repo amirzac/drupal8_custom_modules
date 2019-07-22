@@ -6,13 +6,13 @@ services:
     environment:
       PHP_FPM_CLEAR_ENV: "no"
     volumes:
-      - ./codebase:/var/www/html
+      - ./:/var/www/html
 
   nginx:
     environment:
       NGINX_SERVER_ROOT: /var/www/html/web
     volumes:
-      - ./codebase:/var/www/html
+      - ./:/var/www/html
 
 volumes:
   codebase:
