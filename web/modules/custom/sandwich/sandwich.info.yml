@@ -1,0 +1,5 @@
+name: 'sandwich'
+type: module
+description: 'Example plugin type'
+core: 8.x
+package: 'Custom'
