@@ -1,0 +1,37 @@
+<header id="header" class="header" role="banner" aria-label="{{ 'Site header'|t }}">
+    {{ page.header }}
+</header>
+
+
+{{ page.primary_menu }}
+
+{% if page.banner_top %}
+    <div class="layout-banner-top" role="banner">
+        {{ page.banner_top }}
+    </div>
+{% endif %}
+
+{{ page.help }}
+
+
+<main id="content" class="column main-content" role="main">
+    <a id="main-content" tabindex="-1"></a>
+    <div class="layout-content">
+        {{ page.content }}
+
+        {{ page.content_bottom }}
+    </div>
+</main>
+
+
+{% if page.banner_bottom %}
+    <div class="layout-banner-bottom" role="banner">
+        {{ page.banner_bottom }}
+    </div>
+{% endif %}
+
+{% if page.footer %}
+    <footer role="contentinfo">
+        {{ page.footer }}
+    </footer>
+{% endif %}
