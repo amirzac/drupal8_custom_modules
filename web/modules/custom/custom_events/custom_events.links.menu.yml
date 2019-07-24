@@ -1,0 +1,10 @@
+page_example.description:
+  title: Page Example
+  route_name: user.page
+#  expanded: TRUE
+  parent: account
+#
+#page_example.simple:
+#  title: Simple - no arguments
+#  route_name: user.page
+#  parent: page_example.description

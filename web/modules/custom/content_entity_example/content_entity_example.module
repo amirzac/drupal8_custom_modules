@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains content_entity_example.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function content_entity_example_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the content_entity_example module.
+    case 'help.page.content_entity_example':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Content entity example module') . '</p>';
+      return $output;
+
+    default:
+  }
+}

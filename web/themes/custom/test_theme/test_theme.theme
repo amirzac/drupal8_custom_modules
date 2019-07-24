@@ -52,11 +52,7 @@ function test_theme_theme_suggestions_page_alter(array &$suggestions, array $var
  * Implements hook_theme_suggestions_node_alter().
  */
 function test_theme_theme_suggestions_node_alter(array &$suggestions, array $variables) {
-  /*$node = $variables['elements']['#node'];
 
-  if ($variables['elements']['#view_mode'] == "full") {
-
-  }*/
 }
 
 /**

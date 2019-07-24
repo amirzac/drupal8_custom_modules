@@ -1,0 +1,5 @@
+name: 'Content entity example'
+type: module
+description: 'Content entity example module'
+core: 8.x
+package: 'Custom'
