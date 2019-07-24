@@ -1,0 +1,27 @@
+index:
+  path: /crud-test
+  defaults:
+    _controller: Drupal\crud_testing\Controller\CrudController:index
+  requirements:
+    _permission: 'access content'
+
+create:
+  path: /crud-test/create
+  defaults:
+    _controller: Drupal\crud_testing\Controller\CrudController:createEntity
+  requirements:
+    _permission: 'access content'
+
+update:
+  path: /crud-test/update
+  defaults:
+    _controller: Drupal\crud_testing\Controller\CrudController:updateEntity
+  requirements:
+    _permission: 'access content'
+
+delete:
+  path: /crud-test/delete
+  defaults:
+    _controller: Drupal\crud_testing\Controller\CrudController:deleteEntity
+  requirements:
+    _permission: 'access content'

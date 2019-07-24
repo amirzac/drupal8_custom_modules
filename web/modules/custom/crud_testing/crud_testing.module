@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Contains crud_testing.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function crud_testing_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the crud_testing module.
+    case 'help.page.crud_testing':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Special module for testing CRUD') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function crud_testing_theme() {
+  return [
+    'crud_testing' => [
+      'render element' => 'children',
+    ],
+  ];
+}
+
+function crud_testing_node_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+
+    dump($entity);
+
+}
+
+function crud_testing_node_update(Drupal\Core\Entity\EntityInterface $entity) {
+    dd('article', $entity->getEntityType());
+}

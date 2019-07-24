@@ -1,0 +1,5 @@
+name: 'Crud testing'
+type: module
+description: 'Special module for testing CRUD'
+core: 8.x
+package: 'Custom'
