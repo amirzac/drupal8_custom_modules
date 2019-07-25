@@ -1,0 +1,104 @@
+/*header layout styling*/
+.path-frontpage header {
+    background:
+            #2A93D3;
+    padding: 20px 0;
+}
+.region.region-header {
+    max-width: 1100px;
+    margin: auto;
+    width: 100%;
+}
+
+/* search form*/
+.search-block-form h2 {
+    color:
+            #FFF;
+    font-size: 16px;
+    margin: 0;
+    font-family: arial;
+    font-weight: normal;
+    display: inline-block;
+}
+#search-block-form
+{
+    display: inline-block;
+}
+#search-block-form #edit-submit
+{
+    background:
+            #DDD;
+    border: none;
+    padding: 5px 15px;
+    font-size: 14px;
+}
+#block-dummy-search
+{
+    text-align: right;
+}
+
+
+/* site-name */
+#block-dummy-branding {
+    margin: 20px 0;
+}
+.site-name
+{
+    display: inline-block;
+}
+.site-name a {
+    color:
+            #FFF;
+    font-size: 18px;
+    text-decoration: navajowhite;
+}
+.site-logo {
+    font-size: 14px;
+    color:
+            #FFF;
+    margin-right: 10px;
+}
+
+/*main-menu*/
+#block-dummy-main-menu
+{
+    max-width: 1100px;
+    margin: auto;
+    width: 100%;
+}
+ul.menu a.is-active
+{
+    color:
+            #000;
+    background:
+            #FFF;
+    padding: 10px;
+    font-size: 14px;
+    text-decoration: navajowhite;
+    display: inline-block;
+}
+.menu li a
+{
+    color:
+            #FFF;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px;
+}
+.navigation li {
+    /*display: inline-block;*/
+}
+.navigation .menu {
+    margin: 0;
+}
+
+/*main content */
+.path-frontpage main {
+    max-width: 1100px;
+    margin: auto;
+    width: 100%;
+}
+
+.label a {
+    color: #fff;
+}

@@ -1,0 +1,12 @@
+global-styling-and-scripts:
+  version: VERSION
+  css:
+    theme:
+      css/bootstrap.css: {}
+      css/style.css: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.ui.effects.core
+  js:
+    js/bootstrap.min.js: {}
+  #  js/Customjs.js: {}

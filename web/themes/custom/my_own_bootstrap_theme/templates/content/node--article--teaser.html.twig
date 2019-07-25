@@ -1,0 +1,60 @@
+{{ attach_library('bootstrap_barrio/node') }}
+
+{%
+    set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+]
+%}
+
+
+
+
+<article{{ attributes.addClass(classes) }}>
+
+    {% if not page %}
+        <h2{{ title_attributes.addClass('node__title') }}>
+            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        </h2>
+    {% endif %}
+
+    <h5>Post by {{ author_name }}, {{ date }}</h5>
+    {{ content }}
+
+
+    {#    <h5>#}
+{#        <span class="label label-danger">Food</span>#}
+{#        <span class="label label-primary">Ipsum</span>#}
+{#    </h5><br>#}
+{#    <p>{{ content }}</p>#}
+
+{#    <header>#}
+{#        {{ title_prefix }}#}
+{#        {% if not page %}#}
+{#            <h2{{ title_attributes.addClass('node__title') }}>#}
+{#                <a href="{{ url }}" rel="bookmark">{{ label }}</a>#}
+{#            </h2>#}
+{#        {% endif %}#}
+{#        {{ title_suffix }}#}
+{#        {% if display_submitted %}#}
+{#            <div class="node__meta">#}
+{#                {{ author_picture }}#}
+{#                {% block submitted %}#}
+{#                    <em{{ author_attributes }}>#}
+{#                        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}#}
+{#                    </em>#}
+{#                {% endblock %}#}
+{#                {{ metadata }}#}
+{#            </div>#}
+{#        {% endif %}#}
+{#    </header>#}
+{#    <div{{ content_attributes.addClass('node__content', 'clearfix') }}>#}
+{#        {{ content }}#}
+{#    </div>#}
+
+</article>
