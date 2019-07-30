@@ -1,3 +1,4 @@
+uuid: b19b7c24-47ac-4ce8-882e-f7719d4f9890
 langcode: en
 status: true
 dependencies:
@@ -9,14 +10,19 @@ field_name: field_editors
 entity_type: node
 bundle: page
 label: Editors
-description: 'Page editors'
+description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  min: 1
-  max: 9999
-  prefix: ''
-  suffix: ''
-field_type: integer
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference
