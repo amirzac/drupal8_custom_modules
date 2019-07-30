@@ -1,0 +1,9 @@
+name: 'Frontkom test assignment'
+type: module
+description: 'Frontkom test assignment'
+core: 8.x
+package: 'Frontkom'
+
+# The list of dependencies must contains the 'field' value
+#dependencies:
+#  - field

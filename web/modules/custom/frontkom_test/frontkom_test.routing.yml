@@ -1,0 +1,6 @@
+test:
+  path: /frontkom-test
+  defaults:
+    _controller: Drupal\frontkom_test\Controller\MainController:test
+  requirements:
+    _permission: 'access content'

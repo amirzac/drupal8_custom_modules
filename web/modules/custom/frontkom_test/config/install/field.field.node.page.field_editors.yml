@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_editors
+    - node.type.page
+id: node.page.field_editors
+field_name: field_editors
+entity_type: node
+bundle: page
+label: Editors
+description: 'Page editors'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: 9999
+  prefix: ''
+  suffix: ''
+field_type: integer

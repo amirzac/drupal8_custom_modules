@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Contains frontkom_test.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function frontkom_test_theme() {
+  return [
+    'frontkom_test' => [
+      'render element' => 'children',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_install().
+ */
+function frontkom_test_install() {
+  //\Drupal::logger('frontkom_test')->notice('frontkom_test module has been installed');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function frontkom_test_uninstall() {
+  //\Drupal::logger('frontkom_test')->notice('frontkom_test module has been uninstalled');
+}
