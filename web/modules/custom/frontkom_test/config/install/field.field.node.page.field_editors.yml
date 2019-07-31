@@ -1,5 +1,3 @@
-uuid: b19b7c24-47ac-4ce8-882e-f7719d4f9890
-langcode: en
 status: true
 dependencies:
   config:
@@ -10,11 +8,6 @@ field_name: field_editors
 entity_type: node
 bundle: page
 label: Editors
-description: ''
-required: false
-translatable: false
-default_value: {  }
-default_value_callback: ''
 settings:
   handler: 'default:user'
   handler_settings:

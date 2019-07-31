@@ -1,0 +1,11 @@
+{% if editors %}
+    <ul>
+        {% for user in editors %}
+            <li>
+                <a href="{{ path('entity.user.canonical', {'user': user.uid.value}) }}">
+                    {{ user.name.value }} ({{ user.mail.value }})
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

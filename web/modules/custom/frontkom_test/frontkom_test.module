@@ -5,27 +5,43 @@
  * Contains frontkom_test.module.
  */
 
+use Drupal\node\NodeInterface;
+
 /**
  * Implements hook_theme().
  */
-function frontkom_test_theme() {
+function frontkom_test_theme($existing, $type, $theme, $path) {
   return [
-    'frontkom_test' => [
-      'render element' => 'children',
+    'editors-block' => [
+      'variables' => [
+        'title' => t('Authorized editors'),
+        'editors' => NULL,
+      ],
     ],
   ];
 }
 
 /**
- * Implements hook_install().
+ * Implements hook_entity_prepare_form
  */
-function frontkom_test_install() {
-  //\Drupal::logger('frontkom_test')->notice('frontkom_test module has been installed');
-}
+function frontkom_test_entity_prepare_form(\Drupal\Core\Entity\EntityInterface $entity, $operation, \Drupal\Core\Form\FormStateInterface $form_state) {
+  if($operation !== 'edit') {
+    return true;
+  }
 
-/**
- * Implements hook_uninstall().
- */
-function frontkom_test_uninstall() {
-  //\Drupal::logger('frontkom_test')->notice('frontkom_test module has been uninstalled');
+  $node = \Drupal\node\Entity\Node::load($entity->id());
+
+  if(($node instanceof NodeInterface) && ($node->getType() == 'page')) {
+    $registeredEditorsId = [$node->getOwnerId()];
+    foreach ($node->field_editors->getValue() as $itemReference) {
+      if(!in_array($itemReference['target_id'], $registeredEditorsId)) {
+        array_push($registeredEditorsId, $itemReference['target_id']);
+      }
+    }
+
+    if(!in_array(\Drupal::currentUser()->id(), $registeredEditorsId)) {
+      throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException('');
+    }
+  }
+
 }
