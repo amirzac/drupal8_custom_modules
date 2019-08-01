@@ -7,8 +7,16 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Routing\Access\AccessInterface;
 use Drupal\node\Entity\Node;
 
+/**
+ * Class EditPageAccessCheck
+ *
+ * @package Drupal\frontkom_test\Access
+ */
 class EditPageAccessCheck implements AccessInterface{
 
+  /**
+   * {@inheritdoc}
+   */
   public function access(AccountInterface $account, Node $node) {
 
     if($node->getType() !== 'page') {
@@ -24,11 +32,9 @@ class EditPageAccessCheck implements AccessInterface{
     }
 
     if(!in_array($account->id(), $registeredEditorsId)) {
-      return AccessResult::forbidden('Idi v zopu');
+      return AccessResult::forbidden('Custom message');
     }
 
     return AccessResult::allowed();
   }
-
-
 }

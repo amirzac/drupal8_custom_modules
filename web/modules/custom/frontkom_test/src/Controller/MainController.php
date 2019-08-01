@@ -3,34 +3,26 @@
 namespace Drupal\frontkom_test\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\node\Entity\Node;
-use Drupal\node\Entity\NodeType;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class MainController
+ *
+ * @package Drupal\frontkom_test\Controller
+ */
 class MainController extends ControllerBase{
 
   public function test() {
+    return new Response('frontkom test');
+  }
 
+  public function authorizedEditors()
+  {
     http_response_code(403);
 
-    $node = Node::load(3);
-
     $block_manager = \Drupal::service('plugin.manager.block');
+    $plugin_block = $block_manager->createInstance('authorized_editors');
 
-    $config = [
-      'node' => $node
-    ];
-
-    $plugin_block = $block_manager->createInstance('authorized_editors', $config);
-    $access_result = $plugin_block->access(\Drupal::currentUser());
-
-    if (is_object($access_result) && $access_result->isForbidden() || is_bool($access_result) && !$access_result) {
-      return [];
-    }
-
-    $render = $plugin_block->build();
-
-
-    return $render;
+    return $plugin_block->build();
   }
 }
