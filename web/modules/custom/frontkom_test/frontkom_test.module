@@ -5,6 +5,7 @@
  * Contains frontkom_test.module.
  */
 
+use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 
 /**
@@ -21,27 +22,49 @@ function frontkom_test_theme($existing, $type, $theme, $path) {
   ];
 }
 
-/**
- * Implements hook_entity_prepare_form
- */
-function frontkom_test_entity_prepare_form(\Drupal\Core\Entity\EntityInterface $entity, $operation, \Drupal\Core\Form\FormStateInterface $form_state) {
-  if($operation !== 'edit') {
-    return true;
-  }
+///**
+// * Implements hook_entity_prepare_form
+// */
+//function frontkom_test_entity_prepare_form(\Drupal\Core\Entity\EntityInterface $entity, $operation, \Drupal\Core\Form\FormStateInterface $form_state) {
+//  if($operation !== 'edit') {
+//    return true;
+//  }
+//
+//  $node = \Drupal\node\Entity\Node::load($entity->id());
+//
+//  if(($node instanceof NodeInterface) && ($node->getType() == 'page')) {
+//    $registeredEditorsId = [$node->getOwnerId()];
+//    foreach ($node->field_editors->getValue() as $itemReference) {
+//      if(!in_array($itemReference['target_id'], $registeredEditorsId)) {
+//        array_push($registeredEditorsId, $itemReference['target_id']);
+//      }
+//    }
+//
+//    if(!in_array(\Drupal::currentUser()->id(), $registeredEditorsId)) {
+//      throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException('');
+//    }
+//  }
+//
+//}
 
-  $node = \Drupal\node\Entity\Node::load($entity->id());
 
-  if(($node instanceof NodeInterface) && ($node->getType() == 'page')) {
-    $registeredEditorsId = [$node->getOwnerId()];
-    foreach ($node->field_editors->getValue() as $itemReference) {
-      if(!in_array($itemReference['target_id'], $registeredEditorsId)) {
-        array_push($registeredEditorsId, $itemReference['target_id']);
-      }
-    }
+//function frontkom_test_preprocess_page(&$variables) {
+//
+//  $node = Node::load(3);
+//
+//  $block_manager = \Drupal::service('plugin.manager.block');
+//
+//  $config = [
+//    'node' => $node
+//  ];
+//
+//  $plugin_block = $block_manager->createInstance('authorized_editors', $config);
+//
+//  dump($variables['page']['content']['seven_content']['#block'] = $plugin_block);
+//}
 
-    if(!in_array(\Drupal::currentUser()->id(), $registeredEditorsId)) {
-      throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException('');
-    }
-  }
-
-}
+//function themename_preprocess_page__front(array &$variables) {
+//  $variables['featured'] = views_embed_view('content_list', 'authorized_editors');
+//
+//
+//}

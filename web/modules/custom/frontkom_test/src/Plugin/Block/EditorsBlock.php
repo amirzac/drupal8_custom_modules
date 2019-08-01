@@ -7,8 +7,11 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\block\Entity\Block;
 use Drupal\Core\Annotation\Translation;
 use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Provides a 'EditorsBlock' block.
@@ -18,12 +21,17 @@ use Drupal\node\NodeInterface;
  *  admin_label = @Translation("Authorized editors"),
  * )
  */
-class EditorsBlock extends BlockBase implements BlockPluginInterface {
+class EditorsBlock extends BlockBase implements BlockPluginInterface, ContainerFactoryPluginInterface {
 
   /**
    * @var NodeInterface
    */
   private $node;
+
+  /**
+   * @var RequestStack
+   */
+  private $requestStack;
 
   /**
    * @var array
@@ -32,9 +40,9 @@ class EditorsBlock extends BlockBase implements BlockPluginInterface {
     'page'
   ];
 
-  public function __construct(array $configuration, $plugin_id, $plugin_definition) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, RequestStack $request) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-
+    $this->requestStack = $request;
     $this->initializeNode();
   }
 
@@ -60,17 +68,7 @@ class EditorsBlock extends BlockBase implements BlockPluginInterface {
 
   private function initializeNode():bool
   {
-    $config = $this->getConfiguration();
-
-//    dd($config['node']);
-
-    if(isset($config['node']) && !empty($config['node'])) {
-      $this->node = $config['node'];
-
-      return TRUE;
-    }
-
-    $tempNode = \Drupal::routeMatch()->getParameter('node');
+    $tempNode = $this->requestStack->getCurrentRequest()->get('node');
 
     try {
       if($this->nodeIsValid($tempNode)) {
@@ -87,5 +85,14 @@ class EditorsBlock extends BlockBase implements BlockPluginInterface {
 
   private function nodeIsValid(NodeInterface $node):bool {
     return in_array($node->getType(), $this->allowedNodeTypes);
+  }
+
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('request_stack')
+    );
   }
 }

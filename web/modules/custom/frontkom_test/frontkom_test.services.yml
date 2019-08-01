@@ -1,0 +1,12 @@
+services:
+  frontkom_test.route_subscriber:
+    class: Drupal\frontkom_test\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  frontkom_test.access_edit_page_checker:
+    class: Drupal\frontkom_test\Access\EditPageAccessCheck
+    arguments: ['@current_user']
+#      - '@path.crud'
+    tags:
+      - { name: access_check, applies_to: _frontkom_test_access_check }
