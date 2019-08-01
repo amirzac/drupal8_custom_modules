@@ -8,12 +8,8 @@ use Symfony\Component\Routing\RouteCollection;
 class RouteSubscriber extends RouteSubscriberBase{
 
   public function alterRoutes(RouteCollection $collection) {
-
-//    dd($collection->get('entity.node.edit_form'));
-
     if ($route = $collection->get('entity.node.edit_form')) {
       $route->setRequirement('_custom_access', 'frontkom_test.access_edit_page_checker::access');
     }
   }
-
 }
