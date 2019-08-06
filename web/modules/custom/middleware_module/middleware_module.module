@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains middleware_module.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function middleware_module_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the middleware_module module.
+    case 'help.page.middleware_module':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Example middleware module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
