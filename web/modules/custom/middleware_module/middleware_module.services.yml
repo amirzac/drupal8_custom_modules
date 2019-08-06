@@ -1,0 +1,5 @@
+services:
+  middleware_module.middleware.utm:
+    class: Drupal\middleware_module\UtmDummyMiddleware
+    tags:
+      - { name: http_middleware, priority: 450 }

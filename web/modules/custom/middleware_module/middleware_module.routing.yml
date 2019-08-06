@@ -1,0 +1,6 @@
+test:
+  path: /middleware/test
+  defaults:
+    _controller: Drupal\middleware_module\Controller\TestController:test
+  requirements:
+#    _permission: 'authenticated'
