@@ -3,3 +3,8 @@ services:
     class: Drupal\middleware_module\UtmDummyMiddleware
     tags:
       - { name: http_middleware, priority: 450 }
+
+  middleware_module.dummy_subscriber:
+    class: Drupal\middleware_module\EventSubscriber\DummySubscriber
+    tags:
+      - { name: event_subscriber }
